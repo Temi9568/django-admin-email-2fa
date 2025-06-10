@@ -1,0 +1,59 @@
+[project]
+name = "django-admin-email-2fa"
+dynamic = ["version"]
+authors = [
+    {name = "Temi Olatunji", email = "temiolatunji95@gmail.com"},
+]
+description = "A Django app that adds email-based 2FA to the admin interface."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+classifiers = [
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    'django>=4.2',
+]
+optional-dependencies.dev = [
+    'black==24.4.2', 
+    'isort==5.13.2',  
+    'mypy==1.10.0', 
+    'flake8==7.0.0',
+    'pydocstyle==6.3.0', 
+    'pytest==8.2.2',
+    'pytest-cov>=6.1.1',
+    'pytest-django>=4.11.1',
+    'pre-commit>=4.2.0',
+    "tomli>=2.2.1",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "admin_email_2fa.__version__"}
+
+[tool.isort]
+profile = "black"
+
+[tool.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+files = ["src/admin_email_2fa_utility"]
+ignore_missing_imports = true
+
+[tool.black]
+line-length = 88
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.test_settings"
+python_files = ["tests/test_*.py"]
+addopts = "-v --tb=short --cov=src --cov-report=term-missing"
+pythonpath = [".", "src"]

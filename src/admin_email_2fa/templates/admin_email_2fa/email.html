@@ -1,0 +1,28 @@
+{% load i18n %} 
+{% autoescape off %}
+<body>
+  <div class="mail__content bg-white p-8 shadow-md">
+
+    <div class="content__body py-8 border-b">
+      <p>
+        Hello,
+        <br><br>
+        A new login attempt was made to access your admin account, ({{email}}).
+      </p>
+
+      <p>
+        If this was you, please provide the below token on the challenge page:<br>{{otp}}
+      </p>
+
+      <p>
+        If you did not attempt to log in, please ignore this email.
+      </p>
+
+      <p class="text-sm">
+        Thank You,<br><br>
+      </p>
+    </div>
+
+  </div>
+</body>
+{% endautoescape %}
