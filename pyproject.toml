@@ -50,10 +50,11 @@ line-length = 88
 include-package-data = true
 
 [tool.setuptools.package-data]
-"admin_email_2fa" = ["templates/*"]
+"admin_email_2fa" = ["templates/**/*.html", "templates/**/*"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["admin_email_2fa*"]
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "tests.test_settings"
